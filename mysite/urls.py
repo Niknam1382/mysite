@@ -21,7 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path ('url addres', 'view', #'name')
     path('http-test', http_test),
-    path('json-test', json_test),
-    # this is my test ->
-    path('my-test', my_test)
+    path('json-test', json_test)
 ]

@@ -5,7 +5,3 @@ def http_test(request) :
 
 def json_test(request) :
     return JsonResponse ({'name' : 'Mohammad mahdi'})
-
-# this is just my test
-def my_test(request) :
-    return HttpResponse('./my test/index.html') # I have a little problem :)
