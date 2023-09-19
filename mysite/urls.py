@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mysite.views import http_test, json_test, my_test
+from mysite.views import http_test, json_test, time
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path ('url addres', 'view', #'name')
     path('http-test', http_test),
-    path('json-test', json_test)
+    path('json-test', json_test),
+    path('time', time)
 ]
