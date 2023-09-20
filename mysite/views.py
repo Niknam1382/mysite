@@ -7,7 +7,7 @@ def http_test(request) :
 def json_test(request) :
     return JsonResponse ({'name' : 'Mohammad mahdi'})
 
-def time(request):
+def time(request) :
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
