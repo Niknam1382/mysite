@@ -10,10 +10,13 @@ def time(request) :
     return HttpResponse(html)
 
 def index_view(request) :
-    return HttpResponse ('<h1>Home page</h1>')
+    return render(request, 'website/index.html')
 
 def about_view(request) :
-    return HttpResponse ('<h1>about us:</h1>')
+    return render(request, 'about.html')
+
+# def contact_view(request) :
+#     return HttpResponse ('<h1>Contact</h1>')
 
 def contact_view(request) :
-    return HttpResponse ('<h1>Contact</h1>')
+    return render(request, 'contact.html')
