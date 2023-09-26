@@ -2,7 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 import datetime
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
+def http_test(request) :
+    return HttpResponse ('<h1>Hello Django! This is the first http-test</h1>')
+
+def json_test(request) :
+    return JsonResponse ({'name' : 'Mohammad mahdi'})
 
 def time(request) :
     now = datetime.datetime.now()
