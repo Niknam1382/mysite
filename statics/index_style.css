@@ -1,0 +1,26 @@
+body {
+	background-color: #f5f5dc;
+}
+
+.container {
+	margin: 50px auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	width: 80%;
+	max-width: 800px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.credit {
+	margin-top: 50px;
+	font-size: 14px;
+}
+
+.credit span {
+	color: #555;
+}
