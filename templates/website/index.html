@@ -1,94 +1,353 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
+{% block content %}
 
-<head>
-	<title>Home</title>
-	<link rel="stylesheet" href="{% static 'index.css' %}">
-	<script type="text/javascript">
-		function displayTime() {
-			var currentTime = new Date();
-			var hours = currentTime.getHours();
-			var minutes = currentTime.getMinutes();
-			if (minutes < 10) {
-				minutes = "0" + minutes;
-			}
-			var timeString = hours + ":" + minutes + " ";
-			document.getElementById("clock").innerHTML = timeString;
-		}
-		setInterval(displayTime, 1000);
-	</script>
-</head>
-
-<body>
+<!-- start banner Area -->
+<section class="banner-area relative">
+	<div class="overlay overlay-bg"></div>
 	<div class="container">
-		<h1>Home page (Index)</h1>
-		<p>این صفحه ی اصلی سایت است که با فریم ورک جنگو در حال راه اندازیست</p>
-		<p id="clock"></p>
-		<p class="credit">طراحی شده توسط : <span>Mohammad Mahdi</span></p>
+		<div class="row fullscreen align-items-center justify-content-between">
+			<div class="col-lg-6 col-md-6 banner-left">
+				<h6 class="text-white">Away from monotonous life</h6>
+				<h1 class="text-white">Magical Travel</h1>
+				<p class="text-white">
+					If you are looking at blank cassettes on the web, you may be very confused at the difference in
+					price. You may see some for as low as $.17 each.
+				</p>
+
+			</div>
+
+		</div>
 	</div>
-	<div class="text">
-		<p>Title: Django: A High-Level Web Framework for Rapid Development</p>
+</section>
+<!-- End banner Area -->
 
-		<p>Introduction:
-			Django is a powerful and popular open-source web framework written in Python. It follows the
-			model-view-controller (MVC) architectural pattern and emphasizes the principle of "Don't Repeat Yourself"
-			(DRY). With its simplicity, scalability, and versatility, Django has gained significant traction among
-			developers worldwide. This article provides an overview of Django, its key features, and the benefits it
-			offers for rapid web development.</p>
-
-		<p>Django's Architecture:
-			Django follows a robust architecture that promotes clean and maintainable code. It incorporates the MVC
-			architectural pattern, where models define the data structure, views handle the logic, and templates control
-			the presentation layer. This separation of concerns allows developers to work independently on different
-			aspects of the application, enhancing code organization and reusability.</p>
-
-		<p>Built-in ORM:
-			One of Django's standout features is its Object-Relational Mapping (ORM) layer. Django provides a high-level
-			API for interacting with databases, abstracting away the complexities of SQL queries. Developers can define
-			database models using Python classes, and Django automatically generates the necessary SQL queries. This
-			simplifies database operations and supports multiple database backends, including PostgreSQL, MySQL, and
-			SQLite.</p>
-
-		<p>Admin Interface:
-			Django's admin interface is a powerful tool that automatically generates a user-friendly administrative
-			interface based on the defined models. This feature saves developers considerable effort in creating an
-			admin panel from scratch. The admin interface provides a customizable dashboard for managing data, handling
-			user authentication, and performing CRUD (Create, Read, Update, Delete) operations on database records.</p>
-
-		<p>URL Routing and View System:
-			Django's URL routing mechanism allows developers to map URLs to specific views or functions. This enables
-			clean and structured URL patterns for different pages or actions within the application. Views handle the
-			business logic, process requests, and generate responses. Django supports various response types, including
-			HTML pages, JSON, XML, and file downloads. Additionally, Django's template engine facilitates the creation
-			of dynamic and reusable web templates.</p>
-
-		<p>Form Handling and Validation:
-			Django simplifies form handling and validation through its built-in form handling features. Developers can
-			define forms using Python classes and easily render them in views or templates. Django provides numerous
-			pre-built form fields and validators for common data types. It also offers server-side validation to ensure
-			data integrity and security, saving developers time and effort in writing validation logic.</p>
-
-		<p>Authentication and Security:
-			Security is a critical aspect of web development, and Django incorporates robust authentication and security
-			features. It provides a flexible authentication system that supports user registration, login, password
-			reset, and user permission management. Django also includes protection against common web vulnerabilities,
-			such as cross-site scripting (XSS), cross-site request forgery (CSRF), and SQL injection.</p>
-
-		<p>Testing and Debugging:
-			Django encourages test-driven development by offering a comprehensive testing framework. Developers can
-			write unit tests, integration tests, and functional tests to ensure the correctness of their application's
-			behavior. Django also provides convenient debugging tools, including detailed error reporting, logging
-			capabilities, and a debug toolbar for inspecting HTTP requests and responses.</p>
-
-		<p>Conclusion:
-			Django's popularity stems from its ability to accelerate web development while maintaining code quality and
-			security. Its powerful features, such as the built-in ORM, admin interface, and form handling capabilities,
-			streamline the development process and reduce repetitive tasks. Whether you're building a small-scale web
-			application or a large-scale enterprise system, Django provides an excellent foundation for rapid and
-			scalable development. With its active community and extensive documentation, developers can leverage
-			Django's vast ecosystem of libraries and extensions to further enhance their projects.</p>
+<!-- Start popular-destination Area -->
+<section class="popular-destination-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Popular Destinations</h1>
+					<p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast,
+						day.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="{% static 'img/d1.jpg' %}" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$150</a>
+						<h4>Mountain River</h4>
+						<p>Paraguay</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="{% static 'img/d2.jpg' %}" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$250</a>
+						<h4>Dream City</h4>
+						<p>Paris</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="{% static 'img/d3.jpg' %}" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$350</a>
+						<h4>Cloud Mountain</h4>
+						<p>Sri Lanka</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</body>
+</section>
+<!-- End popular-destination Area -->
 
-</html>
+
+<!-- Start other-issue Area -->
+<section class="other-issue-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10">Other issues we can help you with</h1>
+					<p>We all live in an age that belongs to the young at heart. Life that is.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/o1.jpg' %}" alt="">
+					</div>
+					<a href="#">
+						<h4>Rent a Car</h4>
+					</a>
+					<p>
+						The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/o2.jpg' %}" alt="">
+					</div>
+					<a href="#">
+						<h4>Cruise Booking</h4>
+					</a>
+					<p>
+						I was always somebody who felt quite sorry for myself, what I had not got compared.
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/o3.jpg' %}" alt="">
+					</div>
+					<a href="#">
+						<h4>To Do List</h4>
+					</a>
+					<p>
+						The following article covers a topic that has recently moved to center stage–at least it seems.
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/o4.jpg' %}" alt="">
+					</div>
+					<a href="#">
+						<h4>Food Features</h4>
+					</a>
+					<p>
+						There are many kinds of narratives and organizing principles. Science is driven by evidence.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End other-issue Area -->
+
+
+
+
+
+<!-- Start home-about Area -->
+<section class="home-about-area">
+	<div class="container-fluid">
+		<div class="row align-items-center justify-content-end">
+			<div class="col-lg-6 col-md-12 home-about-left">
+				<h1>
+					Did not find your Package? <br>
+					Feel free to ask us. <br>
+					We‘ll make it for you
+				</h1>
+				<p>
+					inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+					standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the
+					job is beyond reproach. inappropriate behavior is often laughed.
+				</p>
+				<a href="#" class="primary-btn text-uppercase">request custom price</a>
+			</div>
+			<div class="col-lg-6 col-md-12 home-about-right no-padding">
+				<img class="img-fluid" src="{% static 'img/about-img.jpg' %}" alt="">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End home-about Area -->
+
+
+<!-- Start blog Area -->
+<section class="recent-blog-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10">Latest from Our Blog</h1>
+					<p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="active-recent-blog-carusel">
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b1.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">Low Cost Advertising</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b2.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">Creative Outdoor Ads</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b3.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">It's Classified How To Utilize Free</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b1.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">Low Cost Advertising</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b2.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">Creative Outdoor Ads</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="{% static 'img/b3.jpg' %}" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Life Style</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#">
+							<h4 class="title">It's Classified How To Utilize Free</h4>
+						</a>
+						<p>
+							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A
+							farmer.
+						</p>
+						<h6 class="date">31st January,2018</h6>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End recent-blog Area -->
+
+{% endblock %}
