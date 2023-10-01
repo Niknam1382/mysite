@@ -26,3 +26,7 @@ def about_view(request) :
 
 def contact_view(request) :
     return render(request, 'website/contact.html')
+
+def test_view(request) :
+    context = {'name':'Mohammad Mahdi', 'lastname':'Niknam'}
+    return render(request, 'website/test.html', context)

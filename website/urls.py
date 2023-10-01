@@ -1,12 +1,12 @@
 from django.urls import path
 from website.views import *     # * mean's the All function
-urlpatterns = [
-    path('time', time),
 
-    path('', index_view),
-    path('about', about_view),
-    path('contact', contact_view),
-    ###
-    path('http-test', http_test),
-    path('json-test', json_test)
+app_name = 'website'
+
+urlpatterns = [
+    path('', index_view, name='index'),
+    path('about', about_view, name='about'),
+    path('contact', contact_view, name='contact'),
+    path('test', test_view, name='test')
 ]
+    

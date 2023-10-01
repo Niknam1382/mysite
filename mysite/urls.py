@@ -22,8 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path ('url addres', 'view', #'name')
     # path('website/', include('website.urls'))
-    path('', include('website.urls'))
+    path('', include('website.urls')),
     # path('blog\', include('blog.urls'))
+    path('blog/', include('blog.urls')),
+    path('404', include('error.urls'))
 ]
 # static ('static','bace / static')
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
