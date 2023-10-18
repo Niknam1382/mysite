@@ -12,5 +12,5 @@ class contact(models.Model) :
     class Meta :
         ordering = ['-created_date']
 
-    def __str__ (self) :
-        return self.name
+    # def __str__ (self) :
+    #     return '{} - {}'.format(self.name, self.id)
