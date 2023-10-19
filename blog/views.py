@@ -82,5 +82,6 @@ def test (request, pid) :
         context = {'post': post}
         return render(request, 'test.html', context)
     else :
-        obj = get_object_or_404(MyModel, pk=1)
+        obj = get_object_or_404(Post, pk=pid)
+        return render (request)
     
