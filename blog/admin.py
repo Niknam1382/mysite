@@ -8,8 +8,8 @@ class PostAdmin(admin.ModelAdmin):
     empty_value_display = "-empty-"
     # fields = ("title",)
     list_display = ['title','counted_views','status','published_date']
-  # list_display = ('counted_views',) it;s ok
+  # list_display = ('counted_views',) it's ok
     list_filter = ('status',)
-    # ordering = ['-created_date']
+    # ordering = ['-created_date']      { i'm using ordering in the Meta Class in Class Post }
     search_fields = ['title','content']
 # admin.site.register(Post, PostAdmin)

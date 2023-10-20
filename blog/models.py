@@ -15,7 +15,7 @@ class Post(models.Model) :
     updated_date = models.DateTimeField(auto_now=True)
     
     class Meta :
-        # ordering = ['-created_date']
+        # ordering = ['-created_date']          # i chenged the ordering for my exercise in 6th django chapter
         ordering = ['-published_date']
 
 # SELECT * FROM Post
