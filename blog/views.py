@@ -37,7 +37,17 @@ def test (request, pid) :
     context = {'post': post}
     return render(request, 'test.html', context)
 '''
+'''
+def counter (func) :
+    def wrapper() :
+        func()
+        c = Post.objects.get(id = pid)
+        c.counted_views = c.counted_views - 5
+        c.save()
+    return wrapper
 
+@counter
+'''
 def test (request, pid) :
     # post = Post.objects.get(id = pid)
     published_date = Post.objects.get(id = pid).published_date
@@ -91,3 +101,14 @@ def test (request, pid) :
         
     else :
         raise Http404
+
+'''
+# @counter
+def test (request, pid) :
+    current_datetime = datetime.datetime.now()
+    posts = get_object_or_404(Post, pk=pid)
+    posts = posts.exclude(published_date__gt=current_datetime)  # exclude errors
+   #posts = Post.objects.filter(status=1)
+    context = {'post': posts}
+    return render(request, 'test.html', context)
+'''
