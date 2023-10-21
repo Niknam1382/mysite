@@ -13,6 +13,7 @@ def blog_view(request):
 def blog_single(request, pid):
     now = timezone.now()
     posts = Post.objects.filter(status=1).exclude(published_date__gt=now)
+    # posts = Post.objects.filter(status=1, published_date__lte=timezone.now()) that's ok too!
     post = get_object_or_404(posts, pk=pid)
     context = {'post': post}
     c = Post.objects.get(id = pid)
