@@ -15,8 +15,8 @@ def blog_single(request, pid):
     posts = Post.objects.filter(status=1).exclude(published_date__gt=now)
     # posts = Post.objects.filter(status=1, published_date__lte=timezone.now()) that's ok too!
     post = get_object_or_404(posts, pk=pid)
+    post.counted_views += 1
+    post.save()
     context = {'post': post}
-    c = Post.objects.get(id = pid)
-    c.counted_views = c.counted_views + 1
-    c.save()
+
     return render(request, 'blog/blog-single.html', context)
