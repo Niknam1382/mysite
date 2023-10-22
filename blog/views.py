@@ -17,6 +17,30 @@ def blog_single(request, pid):
     post = get_object_or_404(posts, pk=pid)
     post.counted_views += 1
     post.save()
-    context = {'post': post}
-
+    
+    prev = Post.objects.filter(status=1, published_date__lt=post.published_date).exclude(pk=post.pk).order_by('-published_date').first()
+    next = Post.objects.filter(status=1, published_date__gt=post.published_date).exclude(pk=post.pk).order_by('published_date').first()
+    if next.published_date < now :
+        pass
+    else :
+        next = None
+    
+    context = {'post': post, 'prev': prev, 'next': next}
     return render(request, 'blog/blog-single.html', context)
+
+'''
+def blog_single(request, pid):
+    now = timezone.now()
+    post = Post.objects.filter(status=1, pk=pid, published_date__lte=now).first()
+    if not post:
+        raise Http404("Post does not exist.")
+
+    post.counted_views += 1
+    post.save()
+
+    prev = Post.objects.filter(status=1, published_date__lt=post.published_date).exclude(pk=post.pk).order_by('-published_date').first()
+    next = Post.objects.filter(status=1, published_date__gt=post.published_date).exclude(pk=post.pk).order_by('published_date').first()
+
+    context = {'post': post, 'prev': prev, 'next': next}
+    return render(request, 'blog/blog-single.html', context)
+'''
