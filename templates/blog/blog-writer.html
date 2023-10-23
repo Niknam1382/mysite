@@ -1,0 +1,20 @@
+{% load static %}
+
+<div class="single-sidebar-widget user-info-widget">
+    <img src="{% static 'img/blog/user-info.png' %}" width="120" height="120" alt="">
+    <a href="#">
+        <h4>{{post.author.get_full_name}}</h4>
+    </a>
+    <p>
+        Senior blog writer
+    </p>
+    <ul class="social-links">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://github.com/Niknam1382"><i class="fa fa-github"></i></a></li>
+        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+    </ul>
+    <p>
+        My name is Mohammad Mahdi Niknam. I am studying computer science at Islamic Azad University, Tehran branch, and I am interested in programming.
+    </p>
+</div>
