@@ -1,72 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <style>
-        h1 {
-            color: rgb(230, 200, 0);
-            font-family: cursive;
-            text-align: center;
-        }
-
-        h6 {
-            text-align: center;
-        }
-
-        pre {
-            font-size: larger;
-        }
-
-        div {
-            border: 3px solid black;
-            margin: 5px;
-            padding: 5px;
-            border-radius: 15px;
-            color: green;
-            background-color: rgb(0, 128, 0, 0.05);
-        }
-
-        h3 {
-            border: 3px solid black;
-            margin: 5px;
-            padding: 5px;
-            border-radius: 15px;
-            color: red;
-            background-color: rgb(255, 0, 0, 0.05);
-        }
-    </style>
-</head>
-
-<body>
-    <h1>test</h1>
-    <h1>Hello Mr {{name}} {{lastname}}</h1>
-    <hr />
-    <h6>
-        {{posts}}
-    </h6>
-    <hr />
-    {% for post in posts %}
-    {% if post.status == 0 %}
-    <h3>not published yet</h3>
-    {% else %}
-    <div class="d1">
-        <h2>{{post.title}}</h2>
-        <pre>   {{post.content}}</pre>
-        <pre>
-            <small>
-                {{post.created_date}}
-            </small>
-        </pre>
-    </div>
-    {% endif %}
-    {% endfor %}
-</body>
-
-</html> -->
-
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,21 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h3{
-            color: blueviolet;
-            font-size: larger;
-            border: 1px solid red;
-            border-radius: 10px;
-            margin: 10px;
-            padding: 15px;
+        h1{
             text-align: center;
+            color: blue;
+            border: solid 5px gold;
+            border-radius: 40px 0px 40px 0px ;
+            padding: 5px;
+        }
+        body{
+            margin: 30px;
+        }
+        p{
+            font-size: large;
+            font-family: 'Courier New', Courier, monospace;
         }
     </style>
 </head>
 <body>
-    <!-- <h3>{{name}}</h3>
-    <h3>{{family_name}}</h3>
-    <h3>{{age}}</h3> -->
-    <h3>{{post}}</h3>
+    <h1>This is the test HTML</h1>
+    <hr/>
+    <p>The page loaded in {% function %}</p>
+    <hr/>
+    <p>Blog post Counter : {% total_post as tp %}{{tp}}</p>
+    <hr/>
+
+    {% for post in post %}
+    <p>{{post}}</p>
+    {% endfor %}
 </body>
 </html>
