@@ -8,8 +8,8 @@
     <style>
         h1{
             text-align: center;
-            color: blue;
-            border: solid 5px gold;
+            color: red;
+            border: solid 5px blue;
             border-radius: 40px 0px 40px 0px ;
             padding: 5px;
         }
@@ -20,18 +20,27 @@
             font-size: large;
             font-family: 'Courier New', Courier, monospace;
         }
+        pre{
+            font-size: large;
+            font-family: 'Courier New', Courier, monospace;
+            color: brown;
+        }
     </style>
 </head>
 <body>
     <h1>This is the test HTML</h1>
     <hr/>
-    <p>The page loaded in {% function %}</p>
+    <p>The page loaded in -> {% function %}</p>
     <hr/>
     <p>Blog post Counter : {% total_post as tp %}{{tp}}</p>
     <hr/>
-
-    {% for post in post %}
-    <p>{{post}}</p>
+    <p style="font-size: 32px; color: deeppink;" >Posts: </p>
+    {% posts as totalpost %}
+    {% for post in totalpost %}
+    <pre>   {{post.title}}</pre>
+    <pre style="color: darkgreen;">       {{post.content|snippet:50}}</pre>
     {% endfor %}
+    <hr/>
+    
 </body>
 </html>

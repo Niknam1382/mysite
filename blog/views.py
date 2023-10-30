@@ -20,8 +20,7 @@ def blog_single(request, pid):
     
     prev = Post.objects.filter(status=1, published_date__lt=post.published_date).exclude(pk=post.pk).order_by('-published_date').first()
     next = Post.objects.filter(status=1, published_date__gt=post.published_date).exclude(pk=post.pk).order_by('published_date').first()
-    
-    
+     
     context = {'post': post, 'prev': prev, 'next': next}
     return render(request, 'blog/blog-single.html', context)
 
