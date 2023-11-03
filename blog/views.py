@@ -4,9 +4,13 @@ from django.utils import timezone
 
 # Create your views here.
 
-def blog_view(request):
+def blog_view(request, **kwargs):
     now = timezone.now()
     posts = Post.objects.filter(status=1).exclude(published_date__gt=now)
+    if kwargs.get('cat_name') is not None:
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') is not None:
+        posts = posts.filter(author__username=kwargs['author_username'])
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
@@ -26,9 +30,20 @@ def blog_single(request, pid):
 
 def test(request) :
     return render(request, 'test.html')
-
+'''
 def blog_category(request, cat_name):
     posts = Post.objects.filter(status=1)
     posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
+'''
+def blog_search(request):
+    # print(request.__dict__)
+    now = timezone.now()
+    posts = Post.objects.filter(status=1).exclude(published_date__gt=now)
+    if request.method == 'GET':
+        # print(request.GET.get('s'))
+        if s:= request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
