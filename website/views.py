@@ -1,8 +1,9 @@
 from django.shortcuts import render
-
-# Create your views here.
 import datetime
 from django.http import HttpResponse, JsonResponse
+from website.models import contact
+# Create your views here.
+
 
 def http_test(request) :
     return HttpResponse ('<h1>Hello Django! This is the first http-test</h1>')
@@ -28,5 +29,16 @@ def contact_view(request) :
     return render(request, 'website/contact.html')
 
 def test_view(request) :
-    context = {'name':'Mohammad Mahdi', 'lastname':'Niknam'}
-    return render(request, 'website/test.html', context)
+    if request.method == "POST":
+        # print('post')     YES
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        c = contact()
+        c.name = name
+        c.email = email
+        c.subject = subject
+        c.message = message
+        c.save()
+    return render(request, 'website/test.html',{})
