@@ -9,6 +9,7 @@
             width: 300px;
             padding: 20px;
             border: 3px solid white;
+            outline: 3px solid blue;
             border-radius: 10px;
             text-align: center;
             margin: auto;
@@ -17,9 +18,16 @@
         *{
             background-color: #ccc;
         }
+        h2{
+            text-align: center;
+            margin-top: 30px;
+            font-size: xx-large;
+            text-shadow: 2px 2px 2px#ff0000;
+        }
     </style>
 </head>
 <body>
+    <h2>Test-Form</h2>
     <form action="{% url 'website:test' %}" method="post">
         {% csrf_token %}
         <div>
