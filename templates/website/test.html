@@ -9,7 +9,7 @@
             width: 300px;
             padding: 20px;
             border: 3px solid white;
-            border-radius: 5px;
+            border-radius: 10px;
             text-align: center;
             margin: auto;
             margin-top: 150px;
@@ -23,14 +23,15 @@
     <form action="{% url 'website:test' %}" method="post">
         {% csrf_token %}
         <div>
-            <label for="">name: </label>
-            <input type="text" name="name"><br>
+            <!-- <label for="">name: </label>
+            <input type="text" name="name"><br><br>
             <label>email: </label>
-            <input type="text" name="email"><br>
+            <input type="email" name="email"><br><br>
             <label>subject: </label>
-            <input type="text" name="subject"><br>
+            <input type="text" name="subject"><br><br>
             <label>message: </label>
-            <input type="text" name="message"><br>
+            <input type="text" name="message"><br><br> -->
+            {{ form.as_p }}
             <button type="submit">submit</button>
         </div>
     </form>
