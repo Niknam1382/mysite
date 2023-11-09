@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime
 from django.http import HttpResponse, JsonResponse
 from website.models import contact
-from website.forms import NameForm
+from website.forms import NameForm, ContactForm
 # Create your views here.
 
 
@@ -31,16 +31,13 @@ def contact_view(request) :
 
 def test_view(request) :
     if request.method == "POST":
-        form = NameForm(request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            print(name, email, subject, message)
+            # name = form.cleaned_data['name'] # for NameForm
+            form.save()
             return HttpResponse('Done')
         else:
-            return HttpResponse('Not_Valid')
+            return HttpResponse('Not_Valid') # if name on form is incorrect
 
-    form = NameForm()
+    form = ContactForm()
     return render(request, 'website/test.html',{'form': form})
