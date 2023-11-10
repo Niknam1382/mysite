@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import datetime
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse ,HttpResponseRedirect
 from website.models import contact
-from website.forms import NameForm, ContactForm
+from website.forms import NameForm, ContactForm , NewsletterForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -27,7 +28,17 @@ def about_view(request) :
 #     return HttpResponse ('<h1>Contact</h1>')
 
 def contact_view(request) :
-    return render(request, 'website/contact.html')
+    if request.method == 'POST' :
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.name = 'Anonymous'
+            obj.save()
+            messages.add_message(request,messages.SUCCESS, 'Your ticket submited successfully')
+        else :
+            messages.add_message(request,messages.ERROR, 'Your ticket didnt submited')
+    form = ContactForm()
+    return render(request, 'website/contact.html', {'form':form})
 
 def test_view(request) :
     if request.method == "POST":
@@ -35,9 +46,18 @@ def test_view(request) :
         if form.is_valid():
             # name = form.cleaned_data['name'] # for NameForm
             form.save()
-            return HttpResponse('Done')
+            return HttpResponse('<h1>Done</h1>')
         else:
             return HttpResponse('Not_Valid') # if name on form is incorrect
 
     form = ContactForm()
     return render(request, 'website/test.html',{'form': form})
+
+def newsletter_view(request) :
+    if request.method == "POST" :
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/')
