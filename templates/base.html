@@ -63,9 +63,9 @@
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
                         <li><a href="{% url 'website:index' %}">Home</a></li>
-                        <li><a href="{% url 'website:about' %}">About</a></li>  
+                        <li><a href="{% url 'website:about' %}">About</a></li>
                         <li><a href="{% url 'blog:index' %}">Blog</a></li>
-                                
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="elements.html">Elements</a></li>
@@ -87,6 +87,33 @@
     {% block content %}
 
     {% endblock %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+    {% endif %}
+
+    {% if form.errors %}
+    <div class="alert alert-error">
+        <h4>Please fix the following errors</h4>
+        <ul>
+            {% for field in form %}
+            {% if field.errors %}
+            {% for error in field.errors %}
+            <li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+        {% endif %}
+    </div>
+    {% endif %}
+    </div>
+    </div>
+    </section>
 
     <!-- start footer Area -->
     <footer class="footer-area section-gap">
@@ -134,14 +161,13 @@
                             output.
                         </p>
                         <div>
-                            <form
-                                action="{% url 'website:newsletter' %}"
-                                method="post" class="subscription relative">
+                            <form action="{% url 'website:newsletter' %}" method="post" class="subscription relative">
                                 {% csrf_token %}
                                 <div class="input-group d-flex flex-row">
                                     <input name="email" placeholder="Email Address" onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                    <button class="btn bb-btn" type="submit"><span class="lnr lnr-location"></span></button>
+                                    <button class="btn bb-btn" type="submit"><span
+                                            class="lnr lnr-location"></span></button>
                                 </div>
                                 <div class="mt-10 info"></div>
                             </form>

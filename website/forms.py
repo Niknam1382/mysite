@@ -9,13 +9,12 @@ class NameForm(forms.Form):
 
 class ContactForm(forms.ModelForm) :
     # age = forms.IntegerField()
-    subject = forms.CharField(required=False)
     class Meta:
         model = contact
-        fields = '__all__'
+        fields = ['name', 'email', 'subject', 'message']
+        # fields = '__all__'
         # fields = ['name', 'email'] or exclude = ['something'] and ...
         # widgets = ...
-        
 
 class NewsletterForm(forms.ModelForm) :
     class Meta :
