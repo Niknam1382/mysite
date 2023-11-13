@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -37,3 +38,6 @@ class Post(models.Model) :
         l = self.content.split()
         l = l[:35]
         return ' '.join(l) + ' ...'
+    
+    def get_absolute_url(self) :
+        return reverse('blog:single', kwargs={'pid':self.id})

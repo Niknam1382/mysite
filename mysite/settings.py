@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'error',
     'django.contrib.humanize',
     'django_extensions',
-    'django.contrib.sites'
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
 ]
 
 SITE_ID = 2
