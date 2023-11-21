@@ -43,6 +43,7 @@ urlpatterns = [
     ),
     path('robots.txt', include('robots.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
+    path('summernote/', include('django_summernote.urls')),
 ]
 # static ('static','bace / static')
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
