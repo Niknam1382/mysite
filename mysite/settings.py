@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "debug_toolbar", 
     'taggit',
     'django_summernote',
+    'captcha',
 ]
 
 # site's frameworks
@@ -59,6 +61,13 @@ ROBOTS_USE_SITEMAP = True
 
 # summernote's configs
 SUMMERNOTE_THEME = 'bs4'
+
+# captcha admin setting
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+    # 'engine': 'recaptcha',
+    # 'engine': 'recaptcha2',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
