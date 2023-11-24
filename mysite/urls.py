@@ -34,7 +34,7 @@ urlpatterns = [
     path('', include('website.urls')),
     # path('blog\', include('blog.urls'))
     path('blog/', include('blog.urls')),
-    path('404', include('error.urls')),
+    #path('404', include('error.urls')),
     path(
         "sitemap.xml",
         sitemap,
