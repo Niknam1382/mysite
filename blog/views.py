@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from blog.forms import CommentForm
+from django.contrib import messages
+
 # Create your views here.
 
 def blog_view(request, **kwargs):
@@ -27,17 +31,29 @@ def blog_view(request, **kwargs):
     return render(request, 'blog/blog-home.html', context)
 
 def blog_single(request, pid):
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS, 'Your comment submited successfully')
+        else:
+            messages.add_message(request,messages.ERROR, 'Your comment didnt submited')
+
     now = timezone.now()
     posts = Post.objects.filter(status=1).exclude(published_date__gt=now)
     # posts = Post.objects.filter(status=1, published_date__lte=timezone.now()) that's ok too!
     post = get_object_or_404(posts, pk=pid)
+    Comments = Comment.objects.filter(post=post.id, approved=True)  #.order_by('-created_date')
     post.counted_views += 1
     post.save()
     
     prev = Post.objects.filter(status=1, published_date__lt=post.published_date).exclude(pk=post.pk).order_by('-published_date').first()
     next = Post.objects.filter(status=1, published_date__gt=post.published_date).exclude(pk=post.pk).order_by('published_date').first()
-     
-    context = {'post': post, 'prev': prev, 'next': next}
+
+    form = CommentForm()
+
+    context = {'post': post, 'prev': prev, 'next': next, 'Comments':Comments, 'form': form}
     return render(request, 'blog/blog-single.html', context)
 
 def test(request) :
