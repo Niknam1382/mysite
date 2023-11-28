@@ -10,4 +10,6 @@ urlpatterns = [
     # logout
     path('signup', views.signup_view, name='signup'),
     # registration / signup
+    path('reset-password', views.reset_view, name='reset'),
+    path('change-password', views.change_password, name='change'),
 ]

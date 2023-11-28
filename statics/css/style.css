@@ -8162,7 +8162,7 @@ h1, h2, h3, h4, h5,
   background: #1089ff !important; }
 
 .ftco-section {
-  padding: 3em 0; }
+  padding: 1em 0; }
 
 .ftco-no-pt {
   padding-top: 0; }
@@ -8200,7 +8200,7 @@ h1, h2, h3, h4, h5,
       color: #fff; }
 
 .form-control {
-  height: 52px;
+  height: 40px;
   background: #fff;
   color: #000;
   font-size: 16px;
