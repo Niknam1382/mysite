@@ -4,6 +4,12 @@ from django.contrib.auth.forms import AuthenticationForm ,UserCreationForm
 from django.contrib.auth.decorators import login_required
 import random
 
+from accounts.forms import UserForm
+from django.contrib.auth.models import User
+
+from django.conf import settings
+from django.core.mail import EmailMessage , send_mail
+
 # Create your views here.
 def login_view(request):
     '''
@@ -94,8 +100,6 @@ def signup_view(request):
         return redirect('/')
 '''
 
-from accounts.forms import UserForm
-from django.contrib.auth.models import User
 
 def signup_view(request):
     if not request.user.is_authenticated:
@@ -124,8 +128,7 @@ def signup_view(request):
     else:
         return redirect('/')
     
-from django.conf import settings
-from django.core.mail import EmailMessage , send_mail
+
 '''
 def reset_view(request) :
     if not request.user.is_authenticated:
