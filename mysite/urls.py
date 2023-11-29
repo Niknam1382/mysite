@@ -22,12 +22,15 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 
+from .views import timer_view
+
 sitemaps = {
     "static": StaticViewSitemap,
     "blog": BlogSitemap
 }
 
 urlpatterns = [
+    path('',timer_view),
     path('admin/', admin.site.urls),
     # path ('url addres', 'view', #'name')
     # path('website/', include('website.urls'))
