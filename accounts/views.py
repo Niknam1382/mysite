@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.mail import EmailMessage , send_mail
 
+from django.contrib import messages
+import re
+
 # Create your views here.
 def login_view(request):
     '''
@@ -18,7 +21,7 @@ def login_view(request):
     else:
         msg = 'user is not authenticated'
     '''
-    
+    '''
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
@@ -36,7 +39,34 @@ def login_view(request):
     form = AuthenticationForm()
     context = {'form': form}
     return render(request, 'accounts/login.html', context)  #{'msg':msg}
-'''
+    '''
+    msg = None
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        # Check if the username is an email address
+        if re.match(r'^[\w\.-]+@[\w\.-]+\.\w+$', username):
+            email = username
+            user = User.objects.filter(email=email).first()
+            if user:
+                username = user.username
+
+            user = authenticate(request, username=username, password=password)
+        else:
+            user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            msg = messages.error(request, "User not found. Please try again.")
+            pass
+
+    form = AuthenticationForm()
+    context = {'form': form, 'msg': msg}
+    return render(request, 'accounts/login.html', context)
+    '''
     if not request.user.is_authenticated:
         if request.method == 'POST':
             form = AuthenticationForm(request=request, data=request.POST)
@@ -112,16 +142,18 @@ def signup_view(request):
                 password = data['password']
                 first_name = data['first_name']
                 last_name = data['last_name']
-                
+                confirm = request.POST.get('confirm')
 
-                if not User.objects.filter(email = email) :
+                
+                if not User.objects.filter(email = email) and password == confirm :
 
                     user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     user.save()
                     return redirect('/accounts/login')
                 
                 else :
-                    pass
+                    msg = messages.warning(request, "passwords not match")
+                    return render(request, 'accounts/signup.html',{'msg':msg})
 
         form = UserForm()
         return render(request, 'accounts/signup.html',{'form':form})
