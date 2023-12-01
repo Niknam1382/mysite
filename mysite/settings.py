@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'django_summernote',
     'captcha',
     'accounts',
+    "compressor",
+    "cssmin",
+    "jsmin",
 ]
 ''' move to dev
 # site's frameworks
@@ -163,6 +166,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
 '''
+
+application_readable: True
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -185,3 +192,19 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 '''move to prod
 CSRF_COOKIE_SECURE = True
 '''
+
+STATICFILES_FINDERS = ( ##django compressor
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# other finders..
+'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = STATIC_ROOT ##django compressor
+COMPRESS_OFFLINE = True
+
+if not COMPRESS_ENABLED: ##django compressor
+    COMPRESS_ENABLED = True
+    COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+    COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"] ##django compressor
