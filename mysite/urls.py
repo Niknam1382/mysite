@@ -30,7 +30,7 @@ sitemaps = {
 }
 
 urlpatterns = [
-    re_path(r'^.*$', timer_view),
+    # re_path(r'^.*$', timer_view),
     path('admin/', admin.site.urls),
     # path ('url addres', 'view', #'name')
     # path('website/', include('website.urls'))
