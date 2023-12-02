@@ -228,18 +228,20 @@ def reset_view(request):
 def change_password(request):
     if request.method == 'POST':
         password2 = request.POST["password"]
+        password2c = request.POST["password2"]
         confirm = request.POST["confirm"]
-        
-        user_email = request.session.get('user_email')
-        reset_code = request.session.get('reset_code')
-        
-        if confirm == reset_code:
-            try:
-                user = User.objects.get(email=user_email)
-                user.set_password(password2)
-                user.save()
-                return redirect('/accounts/login')
-            except User.DoesNotExist:
-                return redirect('/accounts/reset-password')
-    
+        if password2 == password2c:
+            user_email = request.session.get('user_email')
+            reset_code = request.session.get('reset_code')
+            
+            if str(password2) == str(password2c):
+                if confirm == reset_code:
+                    try:
+                        user = User.objects.get(email=user_email)
+                        user.set_password(password2)
+                        user.save()
+                        return redirect('/accounts/login')
+                    except User.DoesNotExist:
+                        return redirect('/accounts/reset-password')
+            
     return render(request, 'accounts/change.html')
