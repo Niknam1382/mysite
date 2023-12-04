@@ -61,7 +61,7 @@ def login_view(request):
             return redirect('/')
         else:
             msg = messages.error(request, "User not found. Please try again.")
-            pass
+            
 
     form = AuthenticationForm()
     context = {'form': form, 'msg': msg}
